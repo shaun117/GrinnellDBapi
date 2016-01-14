@@ -29,8 +29,7 @@ router.get('/', function(req, res, next) {
 
   /*
     example query url:
-    http://localhost:3000/?LastName=&FirstName=shaun&email=&campusphonenumber=&campusquery=&Homequery=&Department=&Major=&conc=&Gyear=
-  */
+    https://murmuring-cliffs-5798.herokuapp.com/?LastName=&FirstName=shaun&email=&campusphonenumber=&campusquery=&Homequery=&Department=&Major=&conc=&Gyear=  */
 
   //url
   url = 'https://itwebapps.grinnell.edu/classic/asp/campusdirectory/GCdefault.asp?transmit=true&blackboardref=true&'
