@@ -52,7 +52,11 @@ router.get('/', function(req, res, next) {
 
       var $ = cheerio.load(html);
 
-      var jsonRes = []
+      var jsonRes = {
+                      "users": [
+
+                      ]
+                    }
 
       // We'll use the unique header class as a starting point.
       $('table').filter(function () {
@@ -77,7 +81,7 @@ router.get('/', function(req, res, next) {
                             email: "",
                             address: "",
                             box: "",
-                             status: ""
+                            status: ""
                           }
 
           //looper identifies current row
@@ -89,6 +93,8 @@ router.get('/', function(req, res, next) {
             switch (looper) {
                 case 0:
                     jsonCell.pcardImageUrl = $(this).first().attr('src');//todo :get url
+                    var s = $(this).children().first()
+                    console.log(s.html());
                     break;
                 case 1:
                     jsonCell.name = $(this).text();
@@ -109,16 +115,17 @@ router.get('/', function(req, res, next) {
                     jsonCell.box = $(this).text();
                     break;
                 case 7:
-                    status = $(this).text();
+                    jsonCell.status = $(this).text();
                     break;
             }
             looper++;
           });
-          jsonRes.push(jsonCell);
+          //jsonRes.push(jsonCell);
+          jsonRes.users.push(jsonCell);
         });
 
       })
-      res.send(jsonRes)
+      res.send(JSON.stringify(jsonRes))
     }
   })
 });
