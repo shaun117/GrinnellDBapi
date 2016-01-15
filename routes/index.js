@@ -67,6 +67,8 @@ router.get('/', function(req, res, next) {
         var queryResultchild = data.next().next().children().next().next();
         queryResultchild.each(function(){
 
+          var pcardImageUrl, name, dept, phone, email, address, box, status;
+
           //list entry properties
           var jsonCell = { pcardImageUrl: "",
                             name: "",
